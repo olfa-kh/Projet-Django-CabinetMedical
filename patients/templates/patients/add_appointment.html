@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Ajouter un rendez-vous pour {{ patient.firstName }} {{ patient.lastName }}</h1>
+    <!-- Formulaire pour ajouter un rendez-vous -->
+    <form method="post" action="{% url 'add_appointment' patient_id=patient_id %}">
+        <!-- ... -->
+    </form>
+{% endblock %}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Rendez-vous</title>
+    <!-- Ajoutez des liens vers vos fichiers CSS, JS, etc. -->
+</head>
+<body>
+    <h1>Liste des Rendez-vous</h1>
+    <ul>
+        {% for appointment in appointments %}
+            <li>{{ appointment.date }} - {{ appointment.reason }} - {{ appointment.status }}</li>
+        {% empty %}
+            <li>Aucun rendez-vous trouvé.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

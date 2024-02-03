@@ -1,0 +1,67 @@
+{% extends "layouts/base.html" %}
+{% load django_bootstrap5 %}
+{% block title %} Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<style>
+    button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.green-button {
+    background-color: green;
+    color: white;
+}
+
+.red-button {
+    background-color: red;
+    color: white;
+}
+</style>
+
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Patients</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item active">Tables</li>
+            </ol>
+            <div class="col-md-12">
+                <a href="{% url 'create-patient' %}" class="btn btn-success float-right"><i class="fas fa-plus"></i> Ajouter Patient</a>
+            </div>
+      
+            <div class="card mb-4">
+              
+                <div class="card-body">
+                    <form method="post">{% csrf_token %}
+                       {% bootstrap_form form %}
+
+                        {% bootstrap_button button_type="submit" content="Créer" %}
+                        {% bootstrap_button button_type="reset" content="Cancel" %}
+
+
+                    </form>
+                   
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="/static/assets/js/datatables-simple-demo.js"></script>
+
+{% endblock javascripts %}

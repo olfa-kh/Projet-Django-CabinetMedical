@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Rendez-vous de {{ patient.firstName }} {{ patient.lastName }}</h1>
+    <ul>
+        {% for appointment in appointments %}
+            <li>{{ appointment.date }} - {{ appointment.reason }} - {{ appointment.status }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

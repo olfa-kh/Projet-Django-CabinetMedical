@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Éditer le Rendez-vous</title>
+    <!-- Ajoutez des liens vers vos fichiers CSS, JS, etc. -->
+</head>
+<body>
+    <h1>Éditer le Rendez-vous</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Enregistrer les modifications">
+    </form>
+</body>
+</html>

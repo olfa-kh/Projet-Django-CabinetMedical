@@ -1,0 +1,97 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<style>
+    button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.green-button {
+    background-color: green;
+    color: white;
+}
+
+.red-button {
+    background-color: red;
+    color: white;
+}
+</style>
+
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Patients</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item active">Tables</li>
+            </ol>
+            <div class="col-md-12">
+                <a href="{% url 'create-patient' %}" class="btn btn-success float-right"><i class="fas fa-plus"></i> Ajouter Patient</a>
+            </div>
+      
+            <div class="card mb-4">
+              
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Date de naissance</th>
+                                <th>contact info</th>
+                                <th>num-tel</th>
+                                <th>Email</th>
+                                <th>adresse</th>
+                                <th>les rendez-vous</th>
+                                <th>modifier/supprimer</th>
+
+                            </tr>
+                        </thead>
+                       
+                        <tbody>
+                            {% for p in object_list %}
+
+                            <tr>
+                                <td>{{p.firstName}}</td>
+                                <td>{{p.lastName}}</td>
+                                <td>{{p.birth_date}}</td>
+                                <td>{{p.contact_info}}</td>
+                                <td>{{p.phone}}</td>
+                                <td>{{p.email}}</td>
+                                <td>{{p.adress}}</td>
+                                <td><a href="{% url 'patient_appointments' p.id %}">rdv </a></td>
+                                <td>
+                                    <a href="{% url 'update-patient' p.id %}" class="btn btn-info"><i class="fas fa-edit"></i><i></i></a>
+                                    <a href="{% url 'delete-patient' p.id %}" class="btn btn-danger"><i class="fas fa-trash"></i><i></i></a>
+                                </td>
+                            
+                            </tr>
+
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="/static/assets/js/datatables-simple-demo.js"></script>
+
+{% endblock javascripts %}

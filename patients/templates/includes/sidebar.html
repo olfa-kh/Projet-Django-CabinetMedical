@@ -1,0 +1,80 @@
+
+<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+    <div class="sb-sidenav-menu">
+        <div class="nav">
+            <div class="sb-sidenav-menu-heading">Core</div>
+            <a class="nav-link {% if 'index' in segment %} active {% endif %}" href="{% url 'main-view' %}">
+                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                Tablear de bord
+            </a>
+            <div class="sb-sidenav-menu-heading">Interface</div>
+
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                Patients
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                    <a class="nav-link {% if 'tables' in segment %} active {% endif %}" href="{% url 'patient-list-view' %}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Liste des patients
+                    </a>
+                    <a class="nav-link {% if 'tables' in segment %} active {% endif %}" href="{% url 'add_appointment' %}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Creer un RDV
+                    </a>
+<!--                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">-->
+<!--                        Authentication-->
+<!--                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>-->
+<!--                    </a>-->
+<!--                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">-->
+<!--                        <nav class="sb-sidenav-menu-nested nav">-->
+<!--                            <a class="nav-link" href="login.html">Login</a>-->
+<!--                            <a class="nav-link" href="register.html">Register</a>-->
+<!--                            <a class="nav-link" href="password.html">Forgot Password</a>-->
+<!--                        </nav>-->
+<!--                    </div>-->
+<!--                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">-->
+<!--                        Error-->
+<!--                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>-->
+<!--                    </a>-->
+<!--                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">-->
+<!--                        <nav class="sb-sidenav-menu-nested nav">-->
+<!--                            <a class="nav-link" href="page-403.html">401 Page</a>-->
+<!--                            <a class="nav-link" href="page-404.html">404 Page</a>-->
+<!--                            <a class="nav-link" href="page-500.html">500 Page</a>-->
+<!--                        </nav>-->
+<!--                    </div>-->
+                </nav>
+            </div>
+            <div class="sb-sidenav-menu-heading">Connexion</div>
+             {%if not  user.is_authenticated %}
+                <a class="nav-link {% if 'charts' in segment %} active {% endif %}" href="{% url 'login' %}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                    Login
+                </a>
+
+
+            <a class="nav-link {% if 'charts' in segment %} active {% endif %}" href="{% url 'register' %}">
+                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                Creer un compte
+            </a>
+            {% endif %}
+            {%if user.is_authenticated %}
+            <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">logout</button>
+</form>
+{% endif %}
+
+        </div>
+    </div>
+     {%if user.is_authenticated %}
+    <div class="sb-sidenav-footer">
+        <div class="small">Logged in as:</div>
+        {{ request.user.username }}
+    </div>
+{% endif %}
+
+</nav>

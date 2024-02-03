@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Horaires du Dr. {{ doctor.firstName }} {{ doctor.lastName }}</h1>
+    {% include 'doctor_info.html' %}
+    <ul>
+        {% for schedule in schedules %}
+            <li>{{ schedule.dayOfWeek }} - {{ schedule.startTime }} à {{ schedule.endTime }}</li>
+            {% endfor %}
+    </ul>
+{% endblock %}
+
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Horaires du Dr. {{ doctor.firstName }} {{ doctor.lastName }}</h1>
+    {% include 'doctor_info.html' %}
+    <ul>
+        {% for schedule in schedules %}
+            <li>{{ schedule.dayOfWeek }} - {{ schedule.startTime }} à {{ schedule.endTime }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

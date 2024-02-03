@@ -1,0 +1,37 @@
+{% extends "layouts/base-fullscreen.html" %}
+{% load django_bootstrap5 %}
+{% block title %} Login {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card shadow-lg border-0 rounded-lg mt-5">
+                        <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                        <div class="card-body">
+                            <form action='{% url "login" %}' method="post">
+                                {% csrf_token %}
+                               {% bootstrap_form form %}
+
+                                {% bootstrap_button button_type="submit" content="Login" %}
+
+                            </form>
+                        </div>
+                        <div class="card-footer text-center py-3">
+                            <div class="small"><a href='{% url "register" %}'>Need an account? Sign up!</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

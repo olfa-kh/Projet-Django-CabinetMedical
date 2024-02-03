@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Votre titre</title>
+    <!-- Liens vers vos fichiers CSS, etc. -->
+</head>
+<body>
+    <header>
+        <!-- En-tête commun à toutes les pages -->
+        <h1>Mon cabinet médical</h1>
+        <!-- Barre de navigation, menu, etc. -->
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <!-- Autres liens de navigation -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Contenu spécifique à chaque page -->
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Pied de page commun à toutes les pages -->
+        <p>&copy; 2024 Mon cabinet médical</p>
+    </footer>
+</body>
+</html>

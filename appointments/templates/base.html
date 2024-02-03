@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Votre titre</title>
+    <!-- Liens vers vos fichiers CSS, JS, etc. -->
+    <link rel="stylesheet" href="{% static 'appointments/styles.css' %}">
+</head>
+<body>
+    <header>
+        <!-- En-tête commun à toutes les pages -->
+        <h1>Mon cabinet médical</h1>
+        <!-- Barre de navigation, menu, etc. -->
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <!-- Autres liens de navigation -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Contenu spécifique à chaque page -->
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Pied de page commun à toutes les pages -->
+        <p>&copy; 2024 Mon cabinet médical</p>
+    </footer>
+
+    <!-- Scripts JavaScript -->
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
